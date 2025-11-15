@@ -10,7 +10,8 @@
 		<define name="HXCPP_ANDROID_BUILD_ID" />
 		
 		<haxedef name="lime_disable_assets_version" unless="NO_FIREBASE_GRADLE_PATCH" />
-		<template path="project/android" rename="" unless="NO_FIREBASE_GRADLE_PATCH" />
+		<template path="project/android/build.gradle" rename="build.gradle" unless="NO_FIREBASE_GRADLE_PATCH" />
+		<template path="project/android/app/build.gradle" rename="app/build.gradle" unless="NO_FIREBASE_GRADLE_PATCH" />
 		<!-- Adds debug symbold for better stack traces -->
 	</section>
 </extension>

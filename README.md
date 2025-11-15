@@ -1,6 +1,8 @@
 # Firebase Crashlytics extension
 
 #### This extension adds support for reporting crashes to the "Firebase Crashlitycs".
+
+![](./docs/not-fatal.png)
 #### So far this library is android only, but iOS support is something I might implement in the future.
 
 ## Installation
@@ -35,7 +37,14 @@
     ```xml 
     <template path="google-services.json" rename="app/google-services.json"/>
     ```
+5. Set the minimum SDK version to ``26`` or higher
+
+    Firebase crashlytics is not available on devices older than Android 6.0, so we have to bump it.
+
+    You can accomplish this by adding ``	<config type="android" minimum-sdk-version="26" />`` to your project configuration.
 5. Compile your game for android
+
+    ``lime build android`` in case you forgot
 6. Add the symbol upload script
 
     This script will assist you with re-compiling your game (after ``lime build android`` obviously) to add the necessary debugging information.
