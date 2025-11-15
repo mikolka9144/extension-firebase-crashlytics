@@ -1,0 +1,14 @@
+{
+	"name": "extension-firebase-crashlytics",
+	"url": "https://github.com/superpowers04/linc_luajit",
+	"license": "Apache",
+	"tags": [],
+	"description": "Implementation of Google's firebase crashlytics into the Haxe programs and games",
+	"version": "0.0.1",
+	"releasenote": "",
+	"contributors": ["Mikolka9144"],
+	"dependencies": {
+		"extension-androidtools": "",
+		"lime": ""
+	}
+}

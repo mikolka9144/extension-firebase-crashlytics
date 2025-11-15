@@ -1,0 +1,16 @@
+<extension
+	xmlns="http://lime.openfl.org/project/1.0.4"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://lime.openfl.org/project/1.0.4 http://lime.openfl.org/xsd/project-1.0.4.xsd">
+
+	<section if="android">
+		<dependency name="extension-firebase" path="project/firebase" />
+		<haxelib name="extension-androidtools" />
+		<!-- Add a special id for firebase-->
+		<define name="HXCPP_ANDROID_BUILD_ID" />
+		
+		<haxedef name="lime_disable_assets_version" unless="NO_FIREBASE_GRADLE_PATCH" />
+		<template path="project/android" rename="" unless="NO_FIREBASE_GRADLE_PATCH" />
+		<!-- Adds debug symbold for better stack traces -->
+	</section>
+</extension>

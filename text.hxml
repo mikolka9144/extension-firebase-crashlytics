@@ -1,0 +1,4 @@
+--class-path firebase
+-D android
+--library extension-androidtools
+--cpp bin/cpp
