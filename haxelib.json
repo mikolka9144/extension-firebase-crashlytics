@@ -6,7 +6,7 @@
 	"description": "Implementation of Google's firebase crashlytics into the Haxe programs and games",
 	"version": "0.0.1",
 	"releasenote": "",
-	"contributors": ["Mikolka9144"],
+	"contributors": ["mikolka9144"],
 	"dependencies": {
 		"extension-androidtools": "",
 		"lime": ""
