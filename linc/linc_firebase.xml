@@ -2,7 +2,8 @@
 
     <files id='haxe'>
 
-        <compilerflag value='-I${LINC_FIREBASE_PATH}/lib/firebase/include'/>
+        <compilerflag value='-I${LINC_FIREBASE_PATH}/lib/firebase/include' />
+        <compilerflag value="-I${LINC_FIREBASE_PATH}project/firebase-ios/include" if="ios"/>
         <!-- 
         <file name='${LINC_FIREBASE_PATH}/linc/linc_lua.cpp' if="android"/> 
         <file name='${LINC_FIREBASE_PATH}linc/linc_lua.cpp' unless="android"/> -->
@@ -11,7 +12,8 @@
     </files>
 
     <files id="__main__">
-        <compilerflag value='-I${LINC_FIREBASE_PATH}lib/firebase/include/'/>
+        <compilerflag value='-I${LINC_FIREBASE_PATH}/lib/firebase/include' />
+        <compilerflag value="-I${LINC_FIREBASE_PATH}project/firebase-ios/include" if="ios"/>
 
     </files>
     
@@ -41,14 +43,28 @@
             <lib name='${LINC_FIREBASE_PATH}/lib/firebase/libs/android/x86_64/libfirebase_app.a' if='HXCPP_X86_64' />
             <lib name='${LINC_FIREBASE_PATH}/lib/firebase/libs/android/arm64-v8a/libfirebase_app.a' if='HXCPP_ARM64' />
         </section>
-        <!-- <section if="ios">
-			<section if="iphoneos">
-				<lib name='${LINC_FIREBASE_PATH}/lib/lua/lib/iPhone/libluajit.iphoneos-64.a' if='HXCPP_ARM64' />
+        <section if="ios">
+			<!-- <section if="iphoneos">
+				<lib name='${LINC_FIREBASE_PATH}/lib/firebase/lib/iPhone/libluajit.iphoneos-64.a' if='HXCPP_ARM64' />
 			</section>
 			<section if="iphonesim">
 				<lib name='${LINC_FIREBASE_PATH}/lib/lua/lib/iPhone/libluajit.iphonesim-64.a' if='HXCPP_ARM64' />
-			</section>
-		</section> -->
+			</section> -->
+		</section>
     </target>
-    
+
+    <section if="ios">
+        <files id="firebase-ios">
+            <compilerflag value="-I${LINC_FIREBASE_PATH}project/firebase-ios/include" if="ios"/>
+            <compilerflag value="-I${LINC_FIREBASE_PATH}project/admob-ios/include" />
+            <compilerflag value="-F${LINC_FIREBASE_PATH}lib/firebase/frameworks/ios/" />
+            <compilerflag value="-I${LINC_FIREBASE_PATH}lib/firebase/frameworks/ios/FirebaseCrashlytics/FirebaseCrashlytics.xcframework/ios-arm64/FirebaseCrashlytics.framework/Headers" />
+
+            <file name="${LINC_FIREBASE_PATH}project/firebase-ios/src/Crashlytics.mm" />
+        </files>
+
+        <target id="haxe">
+            <files id="firebase-ios" />
+        </target>
+    </section>
 </xml>

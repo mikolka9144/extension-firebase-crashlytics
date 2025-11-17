@@ -4,9 +4,10 @@ import java.awt.GridBagConstraints
 import javax.swing.border.EmptyBorder
 
 apply plugin: 'com.android.application'
+//! These two added
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
-
+//*
 System.setProperty('java.awt.headless','false')
 
 //Uncomment to debug deprecation warnings.
@@ -74,14 +75,14 @@ android {
 		release {
 			minifyEnabled false
 			signingConfig signingConfigs.release
+		  //! These two added
             firebaseCrashlytics {
               // Enable processing and uploading of native symbols to Firebase servers.
-              // By default, this is disabled to improve build speeds.
-              // This flag must be enabled to see properly-symbolicated native
-              // stack traces in the Crashlytics dashboard.
+
               nativeSymbolUploadEnabled true
               unstrippedNativeLibsDir = file("../unstrippedLibs")
           }
+		  //*
 		}
 	}
 

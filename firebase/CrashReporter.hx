@@ -1,20 +1,14 @@
 package firebase;
 
+
 import haxe.CallStack;
 import haxe.Exception;
-#if android
-import extension.androidtools.jni.JNICache;
-#end
+#if android import native.android.CrashlyticsJNI;#end
+#if ios import firebase.native.ios.NativeCrashlytics;#end
 
 
 class CrashReporter {
-    #if android
-    private static function _nativeSendCrash(message:String,stack:Array<String>) {
-        final sendCrashJNI:Null<Dynamic> = JNICache.createStaticMethod('org/haxe/extension/Firebase', 'sendCrash', '(Ljava/lang/String;[Ljava/lang/String;)V');
 
-		if(sendCrashJNI != null) sendCrashJNI(message,stack);
-    }
-    #end
     private static inline final NATIVE_METHOD:Int = -2;
     private static inline final UNKNOWN_LINE:Int = -1;
 
@@ -38,7 +32,8 @@ class CrashReporter {
     }
     public static function sendCrashData(message:String,stack:Array<StackItem>) {
         var native_stack = stack.map(s -> parseStackItem(s));
-        _nativeSendCrash(message,native_stack);
+        #if android CrashlyticsJNI._nativeSendCrash(message,native_stack); #end
+        #if ios NativeCrashlytics.nativeSendCrash(message,native_stack.join("\n")); #end
     }
     public static function sendException(ex:Exception) {
         @:privateAccess

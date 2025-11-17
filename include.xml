@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://lime.openfl.org/project/1.0.4 http://lime.openfl.org/xsd/project-1.0.4.xsd">
 
 	<section if="android">
-		<dependency name="extension-firebase" path="project/firebase" />
+		<dependency name="extension-firebase" path="project/firebase-android" />
 		<haxelib name="extension-androidtools" />
 		<!-- Add a special id for firebase-->
 		<define name="HXCPP_ANDROID_BUILD_ID" />
@@ -13,5 +13,30 @@
 		<template path="project/android/build.gradle" rename="build.gradle" unless="NO_FIREBASE_GRADLE_PATCH" />
 		<template path="project/android/app/build.gradle" rename="app/build.gradle" unless="NO_FIREBASE_GRADLE_PATCH" />
 		<!-- Adds debug symbold for better stack traces -->
+	</section>
+	<section if="ios">
+		<!-- Add APP_NAME/userHeader as a module search dir -->
+		<template path="project/ios/project.pbxproj" rename="../{{app.file}}.xcodeproj/project.pbxproj" unless="NO_FIREBASE_IOS_PATCH" />
+		<template path="lib/firebase/frameworks/ios/module.modulemap" rename="userHeader/module.modulemap" />
+		<template path="lib/firebase/frameworks/ios/Firebase.h" rename="Firebase.h" /> 
+		<template path="project/firebase-ios/src/Crashlytics.mm" rename="Classes/Crashlytics.mm" /> 
+
+		<haxedef name="lime_disable_assets_version" />
+		<dependency name="FBLPromises.xcframework" path="lib/firebase/frameworks/ios/FirebaseAnalytics/FBLPromises.xcframework" />
+		<dependency name="FirebaseAnalytics.xcframework" path="lib/firebase/frameworks/ios/FirebaseAnalytics/FirebaseAnalytics.xcframework" />
+		<dependency name="FirebaseCore.xcframework" path="lib/firebase/frameworks/ios/FirebaseAnalytics/FirebaseCore.xcframework" />
+		<dependency name="FirebaseCoreInternal.xcframework" path="lib/firebase/frameworks/ios/FirebaseAnalytics/FirebaseCoreInternal.xcframework" />
+		<dependency name="FirebaseInstallations.xcframework" path="lib/firebase/frameworks/ios/FirebaseAnalytics/FirebaseInstallations.xcframework" />
+		<dependency name="GoogleAdsOnDeviceConversion.xcframework" path="lib/firebase/frameworks/ios/FirebaseAnalytics/GoogleAdsOnDeviceConversion.xcframework" />
+		<dependency name="GoogleAppMeasurement.xcframework" path="lib/firebase/frameworks/ios/FirebaseAnalytics/GoogleAppMeasurement.xcframework" />
+		<dependency name="GoogleUtilities.xcframework" path="lib/firebase/frameworks/ios/FirebaseAnalytics/GoogleUtilities.xcframework" />
+		<dependency name="nanopb.xcframework" path="lib/firebase/frameworks/ios/FirebaseAnalytics/nanopb.xcframework" />
+
+		<dependency name="FirebaseCoreExtension.xcframework" path="lib/firebase/frameworks/ios/FirebaseCrashlytics/FirebaseCoreExtension.xcframework" />
+		<dependency name="FirebaseCrashlytics.xcframework" path="lib/firebase/frameworks/ios/FirebaseCrashlytics/FirebaseCrashlytics.xcframework" />
+		<dependency name="FirebaseRemoteConfigInterop.xcframework" path="lib/firebase/frameworks/ios/FirebaseCrashlytics/FirebaseRemoteConfigInterop.xcframework" />
+		<dependency name="FirebaseSessions.xcframework" path="lib/firebase/frameworks/ios/FirebaseCrashlytics/FirebaseSessions.xcframework" />
+		<dependency name="GoogleDataTransport.xcframework" path="lib/firebase/frameworks/ios/FirebaseCrashlytics/GoogleDataTransport.xcframework" />
+		<dependency name="Promises.xcframework" path="lib/firebase/frameworks/ios/FirebaseCrashlytics/Promises.xcframework" />
 	</section>
 </extension>

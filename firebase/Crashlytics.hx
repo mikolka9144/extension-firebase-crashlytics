@@ -1,6 +1,11 @@
 package firebase;
 
-import firebase.native.NativeCrashlytics;
+#if android
+import firebase.native.android.NativeCrashlytics;
+#end
+#if ios
+import firebase.native.ios.NativeCrashlytics;
+#end
 import haxe.Exception;
 import haxe.CallStack.StackItem;
 import firebase.CrashReporter;
