@@ -14,7 +14,7 @@
 
 // Import the native Firebase iOS SDK header
 #import <FirebaseCrashlytics.h>
-
+#import <FirebaseCore.h>
 // --- Helper Functions ---
 
 /**
@@ -56,6 +56,7 @@ extern "C" {
         // Initialization is handled by [FIRApp configure] in the AppDelegate.
         // We can check if Crashlytics is configured, but for simplicity,
         // we just return true.
+        [FIRApp configure];
         return true;
     }
 

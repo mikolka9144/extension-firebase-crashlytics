@@ -1,0 +1,70 @@
+<xml>
+
+    <files id='haxe'>
+
+        <compilerflag value='-I${haxelib:extension-firebase-crashlytics}/lib/firebase/include' />
+        <compilerflag value="-I${haxelib:extension-firebase-crashlytics}/project/firebase-ios/include" if="ios"/>
+        <!-- 
+        <file name='${haxelib:extension-firebase-crashlytics}/linc/linc_lua.cpp' if="android"/> 
+        <file name='${haxelib:extension-firebase-crashlytics}linc/linc_lua.cpp' unless="android"/> -->
+        <!-- it's don't want to compile for android without that '/' for some reason -->
+
+    </files>
+
+    <files id="__main__">
+        <compilerflag value='-I${haxelib:extension-firebase-crashlytics}/lib/firebase/include' />
+        <compilerflag value="-I${haxelib:extension-firebase-crashlytics}/project/firebase-ios/include" if="ios"/>
+
+    </files>
+    
+    <target id="haxe">
+        <section if="linux">
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/linux/x86_64/cxx11/libfirebase_analytics.a' if='HXCPP_M64' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/linux/x86_64/cxx11/libfirebase_auth.a' if='HXCPP_M64' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/linux/x86_64/cxx11/libfirebase_database.a' if='HXCPP_M64' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/linux/x86_64/cxx11/libfirebase_app.a' if='HXCPP_M64' />
+            <!-- <lib name='${haxelib:extension-firebase-crashlytics}/lib/lua/lib/Linux/libluajit.a' if='HXCPP_M32' /> -->
+        </section>
+        <section if="android">
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/android/armeabi-v7a/libfirebase_analytics.a' if='HXCPP_ARMV7' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/android/x86/libfirebase_analytics.a' if='HXCPP_X86' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/android/x86_64/libfirebase_analytics.a' if='HXCPP_X86_64' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/android/arm64-v8a/libfirebase_analytics.a' if='HXCPP_ARM64' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/android/armeabi-v7a/libfirebase_auth.a' if='HXCPP_ARMV7' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/android/x86/libfirebase_auth.a' if='HXCPP_X86' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/android/x86_64/libfirebase_auth.a' if='HXCPP_X86_64' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/android/arm64-v8a/libfirebase_auth.a' if='HXCPP_ARM64' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/android/armeabi-v7a/libfirebase_database.a' if='HXCPP_ARMV7' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/android/x86/libfirebase_database.a' if='HXCPP_X86' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/android/x86_64/libfirebase_database.a' if='HXCPP_X86_64' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/android/arm64-v8a/libfirebase_database.a' if='HXCPP_ARM64' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/android/armeabi-v7a/libfirebase_app.a' if='HXCPP_ARMV7' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/android/x86/libfirebase_app.a' if='HXCPP_X86' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/android/x86_64/libfirebase_app.a' if='HXCPP_X86_64' />
+            <lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/libs/android/arm64-v8a/libfirebase_app.a' if='HXCPP_ARM64' />
+        </section>
+        <section if="ios">
+			<!-- <section if="iphoneos">
+				<lib name='${haxelib:extension-firebase-crashlytics}/lib/firebase/lib/iPhone/libluajit.iphoneos-64.a' if='HXCPP_ARM64' />
+			</section>
+			<section if="iphonesim">
+				<lib name='${haxelib:extension-firebase-crashlytics}/lib/lua/lib/iPhone/libluajit.iphonesim-64.a' if='HXCPP_ARM64' />
+			</section> -->
+		</section>
+    </target>
+
+    <section if="ios">
+        <files id="firebase-ios">
+            <compilerflag value="-I${haxelib:extension-firebase-crashlytics}/project/firebase-ios/include" if="ios"/>
+            <compilerflag value="-F${haxelib:extension-firebase-crashlytics}/lib/firebase/frameworks/ios/" />
+            <compilerflag value="-I${haxelib:extension-firebase-crashlytics}/lib/firebase/frameworks/ios/FirebaseAnalytics/FirebaseCore.xcframework/ios-arm64/FirebaseCore.framework/Headers" />
+            <compilerflag value="-I${haxelib:extension-firebase-crashlytics}/lib/firebase/frameworks/ios/FirebaseCrashlytics/FirebaseCrashlytics.xcframework/ios-arm64/FirebaseCrashlytics.framework/Headers" />
+
+            <file name="${haxelib:extension-firebase-crashlytics}/project/firebase-ios/src/Crashlytics.mm" />
+        </files>
+
+        <target id="haxe">
+            <files id="firebase-ios" />
+        </target>
+    </section>
+</xml>

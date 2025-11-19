@@ -1,4 +1,4 @@
-package firebase.native;
+package extension.firebase.native.android;
 
 #if android
 /**

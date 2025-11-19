@@ -1,4 +1,4 @@
-package native.android;
+package extension.firebase.native.android;
 
 #if android
 import extension.androidtools.jni.JNICache;

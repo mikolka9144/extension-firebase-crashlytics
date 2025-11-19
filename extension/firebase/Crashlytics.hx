@@ -1,14 +1,14 @@
-package firebase;
+package extension.firebase;
 
 #if android
-import firebase.native.android.NativeCrashlytics;
+import extension.firebase.native.android.NativeCrashlytics;
 #end
 #if ios
-import firebase.native.ios.NativeCrashlytics;
+import extension.firebase.native.ios.NativeCrashlytics;
 #end
 import haxe.Exception;
 import haxe.CallStack.StackItem;
-import firebase.CrashReporter;
+import extension.firebase.CrashReporter;
 
 /**
  * Haxe extern for the Firebase Crashlytics NDK API.
@@ -17,7 +17,7 @@ import firebase.CrashReporter;
  * @see <a href="https://firebase.google.com/docs/crashlytics">Firebase Crashlytics Docs</a>
  */
 #if !display
-@:build(linc.Linc.xml('firebase'))
+@:buildXml("<include name=\"${haxelib:extension-firebase-crashlytics}/hxcpp_include.xml\" />")
 #end
 @:keep
 class Crashlytics {
@@ -25,7 +25,10 @@ class Crashlytics {
     /**
      * Initialize the Crashlytics NDK API, for Android apps using native code.
      *
-     * This allows finer grained control of when the native API is initialized. Calling this
+     * On iOS, **YOU MUST** call this function as early as possible
+     * in your code to make sure no crashes get past the Firebase Crashlytics.
+     *
+     * On Android, it allows for finer grained control when the native API is initialized. Calling this
      * function is not not strictly necessary as the API will be initialized on the first call
      * to any of the functions within this class.
      *

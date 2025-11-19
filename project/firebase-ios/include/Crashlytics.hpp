@@ -23,8 +23,7 @@ extern "C" {
 
 /**
  * @from Haxe: NativeCrashlytics.Initialize()
- *
- * On iOS, this is mostly a no-op as init is handled by [FIRApp configure].
+ * Initialise the Firebase app
  * @return true if initialization was successful or already completed.
  */
 bool crashlytics_Initialize();

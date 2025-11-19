@@ -1,10 +1,10 @@
-package firebase;
+package extension.firebase;
 
 
 import haxe.CallStack;
 import haxe.Exception;
-#if android import native.android.CrashlyticsJNI;#end
-#if ios import firebase.native.ios.NativeCrashlytics;#end
+#if android import extension.firebase.native.android.CrashlyticsJNI;#end
+#if ios import extension.firebase.native.ios.NativeCrashlytics;#end
 
 
 class CrashReporter {

@@ -1,9 +1,13 @@
-package firebase.native.ios;
+package extension.firebase.native.ios;
 
 #if ios
 @:include('Crashlytics.hpp')
 extern class NativeCrashlytics {
     
+    /**
+     * Initialises the core Firebase framework.
+     * You need to call this as early as possible in your code!
+     */ 
     @:native("crashlytics_Initialize")
     public static function Initialize(): Bool;
 
