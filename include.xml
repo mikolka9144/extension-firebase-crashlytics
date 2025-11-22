@@ -27,6 +27,7 @@
 		<dependency name="GoogleAdsOnDeviceConversion.xcframework" path="lib/firebase/frameworks/ios/FirebaseAnalytics/GoogleAdsOnDeviceConversion.xcframework" />
 		<dependency name="GoogleAppMeasurement.xcframework" path="lib/firebase/frameworks/ios/FirebaseAnalytics/GoogleAppMeasurement.xcframework" />
 		<dependency name="GoogleUtilities.xcframework" path="lib/firebase/frameworks/ios/FirebaseAnalytics/GoogleUtilities.xcframework" />
+		<dependency name="GoogleAppMeasurementIdentitySupport.xcframework" path="lib/firebase/frameworks/ios/FirebaseAnalytics/GoogleAppMeasurementIdentitySupport.xcframework" />
 		<dependency name="nanopb.xcframework" path="lib/firebase/frameworks/ios/FirebaseAnalytics/nanopb.xcframework" />
 
 		<dependency name="FirebaseCoreExtension.xcframework" path="lib/firebase/frameworks/ios/FirebaseCrashlytics/FirebaseCoreExtension.xcframework" />

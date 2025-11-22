@@ -20,7 +20,7 @@ extern class NativeCrashlytics {
      *
      * @return true if initialization was successful or already completed.
      */
-    @:native("firebase::crashlytics::Initialize")
+    @:native("::firebase::crashlytics::Initialize")
     public static function Initialize(): Bool;
 
     // /**
@@ -34,7 +34,7 @@ extern class NativeCrashlytics {
      *
      * @param msg The message to be logged.
      */
-    @:native("firebase::crashlytics::Log")
+    @:native("::firebase::crashlytics::Log")
     public static function Log(msg: String): Void;
 
     /**
@@ -44,7 +44,7 @@ extern class NativeCrashlytics {
      * @param key The custom key.
      * @param value The boolean value.
      */
-    @:native("firebase::crashlytics::SetCustomKey")
+    @:native("::firebase::crashlytics::SetCustomKey")
     public overload static function SetCustomKey(key: String, value: Bool): Void;
 
     /**
@@ -54,7 +54,7 @@ extern class NativeCrashlytics {
      * @param key The custom key.
      * @param value The string value.
      */
-    @:native("firebase::crashlytics::SetCustomKey")
+    @:native("::firebase::crashlytics::SetCustomKey")
     public overload static function SetCustomKey(key: String, value: String): Void;
 
     /**
@@ -64,7 +64,7 @@ extern class NativeCrashlytics {
      * @param key The custom key.
      * @param value The numeric value.
      */
-    @:native("firebase::crashlytics::SetCustomKey")
+    @:native("::firebase::crashlytics::SetCustomKey")
     public overload static function SetCustomKey(key: String, value: Float): Void;
 
     /**
@@ -74,7 +74,7 @@ extern class NativeCrashlytics {
      * @param key The custom key.
      * @param value The numeric value.
      */
-    @:native("firebase::crashlytics::SetCustomKey")
+    @:native("::firebase::crashlytics::SetCustomKey")
     public overload static function SetCustomKey(key: String, value: Int): Void;
 
     /**
@@ -83,7 +83,7 @@ extern class NativeCrashlytics {
      *
      * @param id The user identifier string.
      */
-    @:native("firebase::crashlytics::SetUserId")
+    @:native("::firebase::crashlytics::SetUserId")
     public static function SetUserId(id: String): Void;
 }
 #end
