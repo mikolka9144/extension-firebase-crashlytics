@@ -1,0 +1,55 @@
+//  buildscript {
+
+//     repositories {
+//       // Check that you have the following line (if not, add it):
+//       google()  // Google's Maven repository
+//     }
+
+//     dependencies {
+//       // ...
+
+//       // Add the following lines:
+//       classpath 'com.google.gms:google-services:4.4.4'  // Google Services plugin
+//       implementation 'com.google.android.gms:18.9.0'
+//     }
+//   }
+
+apply plugin: 'com.android.library'
+// apply plugin: 'com.google.gms.google-services'  // Google Services plugin
+
+repositories
+{
+	mavenCentral()
+	google()
+}
+
+tasks.withType(JavaCompile)
+{
+	options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+}
+
+android
+{
+	namespace 'org.haxe.extension.firebase'
+	compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+}
+
+dependencies
+{
+	implementation project(':deps:extension-api')
+
+		// Import the BoM for the Firebase platform
+    implementation(platform("com.google.firebase:firebase-bom:34.5.0"))
+
+    // Add the dependencies for the Crashlytics NDK and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation("com.google.firebase:firebase-crashlytics-ndk")
+    implementation("com.google.firebase:firebase-analytics")
+}
+
+apply from: "firebase_dependencies.gradle"
+firebaseCpp.dependencies {
+  analytics
+  auth
+  database
+}

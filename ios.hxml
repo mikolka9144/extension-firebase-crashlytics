@@ -1,0 +1,3 @@
+--class-path firebase
+-D ios
+--cpp bin/cpp
