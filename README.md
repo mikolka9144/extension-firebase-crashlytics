@@ -1,10 +1,10 @@
-Note: Repo might get re-created for the 1.0 version to clean up junk files
-
 # Firebase Crashlytics extension
 
 #### This extension adds support for reporting crashes to the "Firebase Crashlitycs".
 
-![](./docs/not-fatal.png)
+|   |  | 
+|-------|-----|
+| ![](./docs/not-fatal.png) | ![](./docs/fatal.png)   | 
 
 The library primally supports Android, but *technically* it should also work with the iOS
 (although no sucsessful crash was received so far)
